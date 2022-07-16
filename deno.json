@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"build": "tsc -p src && uglifyjs ./node_modules/commonmark/dist/commonmark.js ./src/common-mark.js --compress --output ./docs/common-mark.ts",
+		"build": "tsc -p src && uglifyjs ./node_modules/commonmark/dist/commonmark.js ./src/common-mark.js --compress --output ./docs/common-mark.js",
 		"test": "deno run --allow-read tests/test.ts"
 	},
 	"lint": {
