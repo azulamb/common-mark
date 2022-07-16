@@ -1,0 +1,27 @@
+{
+	"tasks": {
+		"build": "tsc -p src && uglifyjs ./node_modules/commonmark/dist/commonmark.js ./src/common-mark.js --compress --output ./docs/common-mark.ts",
+		"test": "deno run --allow-read tests/test.ts"
+	},
+	"lint": {
+		"files": {
+			"include": ["./src/common-mark.ts"]
+		},
+		"rules": {
+			"tags": ["recommended"],
+			"include": [],
+			"exclude": ["require-await"]
+		}
+	},
+	"fmt": {
+		"files": {
+			"include": ["./src/common-mark.ts"]
+		},
+		"options": {
+			"useTabs": true,
+			"indentWidth": 4,
+			"lineWidth": 160,
+			"singleQuote": true
+		}
+	}
+}
