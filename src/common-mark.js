@@ -78,11 +78,22 @@
         set src(value) {
             this.setAttribute('src', value || '');
         }
+        get force() {
+            return this.hasAttribute('force');
+        }
+        set force(value) {
+            if (!value) {
+                this.removeAttribute('force');
+            }
+            else {
+                this.setAttribute('force', '');
+            }
+        }
         static get observedAttributes() {
             return ['src'];
         }
         attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
+            if (oldVal === newVal && !this.force) {
                 return;
             }
             switch (attrName) {

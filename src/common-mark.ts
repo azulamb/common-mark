@@ -13,6 +13,8 @@ declare const commonmark: {
 
 interface CommonMarkElement extends HTMLElement {
 	src: string;
+	/** Force update when set src. */
+	force: boolean;
 }
 
 ((script, init) => {
@@ -107,12 +109,23 @@ interface CommonMarkElement extends HTMLElement {
 				this.setAttribute('src', value || '');
 			}
 
+			get force() {
+				return this.hasAttribute('force');
+			}
+			set force(value) {
+				if (!value) {
+					this.removeAttribute('force');
+				} else {
+					this.setAttribute('force', '');
+				}
+			}
+
 			static get observedAttributes() {
 				return ['src'];
 			}
 
 			public attributeChangedCallback(attrName: string, oldVal: any, newVal: any) {
-				if (oldVal === newVal) {
+				if (oldVal === newVal && !this.force) {
 					return;
 				}
 

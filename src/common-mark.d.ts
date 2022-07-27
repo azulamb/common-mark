@@ -12,4 +12,5 @@ declare const commonmark: {
 };
 interface CommonMarkElement extends HTMLElement {
     src: string;
+    force: boolean;
 }
